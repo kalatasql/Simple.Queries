@@ -1,0 +1,11 @@
+-- Use the database
+USE DBName;
+
+-- Get TOTAL SALES and total earnings for all dates after January 1, 2024 year
+SELECT CONVERT(Date, SaleDate) AS [DATE],
+       COUNT(1) AS [TOTAL SALES], -- count rows for SaleDate
+       SUM(Product_Price) AS [TOTAL PRICE]             
+FROM
+Sales
+WHERE SaleDate >= '2024-01-01' 
+GROUP BY CONVERT(Date, SaleDate) -- We need to convert SaleDate to Date, to make properly grouping by dates.                           
